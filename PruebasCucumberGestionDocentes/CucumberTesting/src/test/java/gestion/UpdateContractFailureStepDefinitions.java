@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-public class UpdateContractStepDefinitions extends BasicStepDefinition {
+public class UpdateContractFailureStepDefinitions extends BasicStepDefinition {
 
     @Given("el usuario accede a la página de actualización de contratos")
     public void elUsuarioAccedeALaPaginaDeActualizacionDeContratos() {
@@ -92,11 +92,7 @@ public class UpdateContractStepDefinitions extends BasicStepDefinition {
         captureScreenShot();
 
         try {
-            if (resultadoEsperado.equals("Contrato actualizado correctamente")) {
-                WebElement successMessage = driver.findElement(By.xpath("//div[contains(text(), 'Contrato actualizado correctamente')]"));
-                assertEquals("Contrato actualizado correctamente", successMessage.getText().trim());
-                addText("Prueba correcta: La actualización se realizó con éxito.");
-            } else if (resultadoEsperado.equals("Campos vacíos y mensaje de error")) {
+            if (resultadoEsperado.equals("Campos vacíos y mensaje de error")) {
                 WebElement errorMessage = driver.findElement(By.xpath("//div[contains(@class, 'error-message')]"));
                 assertEquals("Campos obligatorios vacíos", errorMessage.getText().trim());
                 addText("Prueba correcta: Se muestra el mensaje de error por campos vacíos.");
