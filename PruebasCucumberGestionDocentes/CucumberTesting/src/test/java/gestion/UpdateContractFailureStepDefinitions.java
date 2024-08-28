@@ -21,7 +21,7 @@ public class UpdateContractFailureStepDefinitions extends BasicStepDefinition {
 
     @Given("el usuario accede a la página de actualización de contratos")
     public void elUsuarioAccedeALaPaginaDeActualizacionDeContratos() {
-        createPDF("UpdateContract");
+        createPDF("UpdateContractFailure");
         addText("Inicio de prueba: el usuario accede a la página de actualización de contratos");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();

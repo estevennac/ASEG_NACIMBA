@@ -1,4 +1,4 @@
-Feature: Actualización de Contrato
+Feature: Actualización de Contrato Fallido
 
 Scenario Outline: Actualización de Datos del Contrato con Campos Vacíos o Incompletos
 Given el usuario accede a la página de actualización de contratos
