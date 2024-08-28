@@ -14,7 +14,7 @@ public class AddContratoSuccessStepDefinitions extends BasicStepDefinition {
 
     @Given("el usuario está en la página de agregar contrato")
     public void elUsuarioEstaEnLaPaginaDeAgregarContrato() {
-        createPDF("Agregar Contrato");
+        createPDF("Agregar Contrato Exitoso");
         addText("Inicio de prueba: el usuario está en la página de agregar contrato");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();

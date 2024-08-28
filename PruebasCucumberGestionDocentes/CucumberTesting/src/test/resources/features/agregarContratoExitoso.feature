@@ -1,6 +1,6 @@
 Feature: Agregar Nuevo Contrato
 
-Scenario Outline: Agregar Contrato
+Scenario Outline: Agregar Contrato Exitoso
 Given el usuario está en la página de agregar contrato
 When el usuario selecciona el docente "<docente>", el requerimiento "<requerimiento>" y llena los datos "<fechaInicio>", "<fechaFin>", "<fuente>", "<fecha>", "<certificacionPresupuestaria>", "<idMemo>", "<analistaDelProceso>" y "<archivoMemo>"
 And el usuario hace clic en "Agregar Contrato"

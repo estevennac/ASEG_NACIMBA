@@ -1,4 +1,4 @@
-Feature: Agregar Nuevo Contrato
+Feature: Agregar Nuevo Contrato Fallido
 
 Scenario Outline: Agregar Contrato con Campos Vacíos
 Given el usuario está en la página de agregar contrato
