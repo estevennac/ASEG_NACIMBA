@@ -11,14 +11,14 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class SearchContratoStepDefinitions extends BasicStepDefinition {
+public class SearchContratoFailStepDefinitions extends BasicStepDefinition {
 
     private boolean testPassed;
     private static int scenarioCounter = 0; // Contador de escenarios
 
     @Given("el usuario está en la página de búsqueda de contratos")
     public void elUsuarioEstaEnLaPaginaDeBusquedaDeContratos() {
-        createPDF("BusquedaContratosExitoso");
+        createPDF("BusquedaContratos");
         addText("Inicio de prueba: el usuario está en la página de búsqueda de contratos");
         driver.manage().window().maximize();
         driver.get("http://localhost:3000/SearchContrato");

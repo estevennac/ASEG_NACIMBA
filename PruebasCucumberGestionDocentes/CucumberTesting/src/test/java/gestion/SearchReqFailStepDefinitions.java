@@ -11,19 +11,19 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class SearchContratoStepDefinitions extends BasicStepDefinition {
+public class SearchReqFailStepDefinitions extends BasicStepDefinition {
 
     private boolean testPassed;
-    private static int scenarioCounter = 0; // Contador de escenarios
+    private static int scenarioCounter = 0;
 
-    @Given("el usuario está en la página de búsqueda de contratos")
-    public void elUsuarioEstaEnLaPaginaDeBusquedaDeContratos() {
-        createPDF("BusquedaContratosExitoso");
-        addText("Inicio de prueba: el usuario está en la página de búsqueda de contratos");
+    @Given("el usuario está en la página de búsqueda de requerimientos")
+    public void elUsuarioEstaEnLaPaginaDeBusquedaDeRequerimientos() {
+        createPDF("BusquedaRequerimientosFail");
+        addText("Inicio de prueba: el usuario está en la página de búsqueda de requerimientos");
         driver.manage().window().maximize();
-        driver.get("http://localhost:3000/SearchContrato");
-        testPassed = true; // Inicializamos la prueba como exitosa
-        scenarioCounter++; // Incrementamos el contador de escenarios
+        driver.get("http://localhost:3000/SearchReq");
+        testPassed = true;
+        scenarioCounter++;
     }
 
     @When("el usuario ingresa {string} en el campo de búsqueda")
@@ -41,16 +41,16 @@ public class SearchContratoStepDefinitions extends BasicStepDefinition {
         List<WebElement> results = driver.findElements(By.cssSelector(".content-table tbody tr"));
         boolean resultsFound = results.size() > 0;
 
-        if (expectedResult.equals("No existe")) {
+        if (expectedResult.equals("No se encontraron resultados")) {
             if (resultsFound) {
-                addText("Prueba fallida: Se esperaban 'No existe', pero se encontraron resultados.");
-                testPassed = false; // Marcar como fallida
+                addText("Prueba fallida: Se esperaban 'No se encontraron resultados', pero se encontraron resultados.");
+                testPassed = false;
             }
-            assertTrue("Se esperaban 'No existe', pero se encontraron resultados.", !resultsFound);
+            assertTrue("Se esperaban 'No se encontraron resultados', pero se encontraron resultados.", !resultsFound);
         } else {
             if (!resultsFound) {
                 addText("Prueba fallida: No se encontraron los resultados esperados para la búsqueda: " + expectedResult);
-                testPassed = false; // Marcar como fallida
+                testPassed = false;
             }
             assertTrue("No se encontraron resultados para la búsqueda: " + expectedResult, resultsFound);
         }
