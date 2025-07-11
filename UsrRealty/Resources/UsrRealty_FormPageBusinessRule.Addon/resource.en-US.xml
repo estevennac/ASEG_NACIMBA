@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="AddonConfig.Rules.2596fba3-533d-fb46-5e2e-94e3b76ba66f.Caption" Value="Show elements: Comission" />
+			<Item Name="AddonConfig.Rules.88f3826f-3e88-87ab-fb6f-e645e9b1ccf8.Caption" Value="Business rule" />
+			<Item Name="Caption" Value="Realty form page (Business rules)" />
+		</Items>
+	</Group>
+</Resources>
