@@ -265,6 +265,29 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
 				"index": 4
+			},
+			{
+				"operation": "insert",
+				"name": "CommissionPercent",
+				"values": {
+					"layoutConfig": {
+						"column": 2,
+						"colSpan": 1,
+						"row": 4,
+						"rowSpan": 1
+					},
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrOfferTypeUsrCommissionPercent_q1liqrv",
+					"labelPosition": "auto",
+					"control": "$PDS_UsrOfferTypeUsrCommissionPercent_q1liqrv",
+					"visible": true,
+					"readonly": true,
+					"placeholder": "",
+					"tooltip": ""
+				},
+				"parentName": "GeneralInfoTabContainer",
+				"propertyName": "items",
+				"index": 5
 			}
 		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
@@ -318,6 +341,11 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 						"modelConfig": {
 							"path": "PDS.UsrComission"
 						}
+					},
+					"PDS_UsrOfferTypeUsrCommissionPercent_q1liqrv": {
+						"modelConfig": {
+							"path": "PDS.UsrOfferTypeUsrCommissionPercent_q1liqrv"
+						}
 					}
 				}
 			},
@@ -350,27 +378,35 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"PDS": {
 						"type": "crt.EntityDataSource",
 						"config": {
-							"entitySchemaName": "UsrRealty"
+							"entitySchemaName": "UsrRealty",
+							"attributes": {
+								"UsrOfferTypeUsrCommissionPercent_q1liqrv": {
+									"path": "UsrOfferType.UsrCommissionPercent",
+									"type": "ForwardReference"
+								}
+							}
 						},
 						"scope": "page"
 					}
 				}
 			}
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-		handlers: /**SCHEMA_HANDLERS*/[
+handlers: /**SCHEMA_HANDLERS*/[
 			{
-				request: "usr.PushButtonRequest",
-				/* Implementation of the custom query handler. */
+				request: "crt.HandleViewModelAttributeChangeRequest",
+				/* The custom implementation of the system query handler. */
 				handler: async (request, next) => {
-					console.log("Button works...");
-					Terrasoft.showInformation("My button was pressed.");
-					var price = await request.$context.PDS_UsrPriceUSD_o6qqcz6;
-					console.log("Price = " + price);
-					request.$context.PDS_UsrArea_glmjgg6 = price * 0.2;
+      					if (request.attributeName === 'PDS_UsrPrice_mcp2pez' || 				             // if price changed
+					   request.attributeName === 'PDS_UsrOfferTypeUsrCommissionPercent_q1liqrv' ) { 		// or percent changed
+						var price = await request.$context.PDS_UsrPrice_mcp2pez;
+						var percent = await request.$context.PDS_UsrOfferTypeUsrCommissionPercent_q1liqrv;
+						var commission = price * percent / 100;
+						request.$context.PDS_UsrComission_pv5qrjp = commission;
+					}
 					/* Call the next handler if it exists and return its result. */
 					return next?.handle(request);
 				}
-			},
+			}
 		]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
