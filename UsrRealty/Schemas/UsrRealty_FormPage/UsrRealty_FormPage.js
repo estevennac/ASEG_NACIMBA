@@ -288,6 +288,387 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
 				"index": 5
+			},
+			{
+				"operation": "insert",
+				"name": "ExpansionPanel_8avdqwi",
+				"values": {
+					"type": "crt.ExpansionPanel",
+					"tools": [],
+					"items": [],
+					"title": "#ResourceString(ExpansionPanel_8avdqwi_title)#",
+					"toggleType": "default",
+					"togglePosition": "before",
+					"expanded": true,
+					"labelColor": "auto",
+					"fullWidthHeader": false,
+					"titleWidth": 20,
+					"padding": {
+						"top": "small",
+						"bottom": "small",
+						"left": "none",
+						"right": "none"
+					},
+					"fitContent": true
+				},
+				"parentName": "GeneralInfoTab",
+				"propertyName": "items",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "GridContainer_853jvuh",
+				"values": {
+					"type": "crt.GridContainer",
+					"rows": "minmax(max-content, 24px)",
+					"columns": [
+						"minmax(32px, 1fr)"
+					],
+					"gap": {
+						"columnGap": "large",
+						"rowGap": 0
+					},
+					"styles": {
+						"overflow-x": "hidden"
+					},
+					"items": []
+				},
+				"parentName": "ExpansionPanel_8avdqwi",
+				"propertyName": "tools",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "FlexContainer_k4i97jf",
+				"values": {
+					"type": "crt.FlexContainer",
+					"direction": "row",
+					"gap": "none",
+					"alignItems": "center",
+					"items": [],
+					"layoutConfig": {
+						"colSpan": 1,
+						"column": 1,
+						"row": 1,
+						"rowSpan": 1
+					}
+				},
+				"parentName": "GridContainer_853jvuh",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailAddBtn_4fvjlqn",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(GridDetailAddBtn_4fvjlqn_caption)#",
+					"icon": "add-button-icon",
+					"iconPosition": "only-icon",
+					"color": "default",
+					"size": "medium",
+					"clicked": {
+						"request": "crt.CreateRecordRequest",
+						"params": {
+							"entityName": "UsrRealtyVisit",
+							"defaultValues": [
+								{
+									"attributeName": "UsrParentRealty",
+									"value": null
+								}
+							]
+						}
+					},
+					"visible": true,
+					"clickMode": "default"
+				},
+				"parentName": "FlexContainer_k4i97jf",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailRefreshBtn_10jii2p",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(GridDetailRefreshBtn_10jii2p_caption)#",
+					"icon": "reload-icon",
+					"iconPosition": "only-icon",
+					"color": "default",
+					"size": "medium",
+					"clicked": {
+						"request": "crt.LoadDataRequest",
+						"params": {
+							"config": {
+								"loadType": "reload"
+							},
+							"dataSourceName": "GridDetail_nysitpfDS"
+						}
+					}
+				},
+				"parentName": "FlexContainer_k4i97jf",
+				"propertyName": "items",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailSettingsBtn_9sz2gv2",
+				"values": {
+					"type": "crt.Button",
+					"caption": "#ResourceString(GridDetailSettingsBtn_9sz2gv2_caption)#",
+					"icon": "actions-button-icon",
+					"iconPosition": "only-icon",
+					"color": "default",
+					"size": "medium",
+					"clickMode": "menu",
+					"menuItems": []
+				},
+				"parentName": "FlexContainer_k4i97jf",
+				"propertyName": "items",
+				"index": 2
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailExportDataBtn_83jxccn",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(GridDetailExportDataBtn_83jxccn_caption)#",
+					"icon": "export-button-icon",
+					"color": "default",
+					"size": "medium",
+					"clicked": {
+						"request": "crt.ExportDataGridToExcelRequest",
+						"params": {
+							"viewName": "RealtyVisitsGridDetails"
+						}
+					}
+				},
+				"parentName": "GridDetailSettingsBtn_9sz2gv2",
+				"propertyName": "menuItems",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailImportDataBtn_eljv19h",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(GridDetailImportDataBtn_eljv19h_caption)#",
+					"icon": "import-button-icon",
+					"color": "default",
+					"size": "medium",
+					"clicked": {
+						"request": "crt.ImportDataRequest",
+						"params": {
+							"entitySchemaName": "UsrRealtyVisit"
+						}
+					}
+				},
+				"parentName": "GridDetailSettingsBtn_9sz2gv2",
+				"propertyName": "menuItems",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetailSearchFilter_8w2harc",
+				"values": {
+					"type": "crt.SearchFilter",
+					"placeholder": "#ResourceString(GridDetailSearchFilter_8w2harc_placeholder)#",
+					"iconOnly": true,
+					"_filterOptions": {
+						"expose": [
+							{
+								"attribute": "GridDetailSearchFilter_8w2harc_GridDetail_nysitpf",
+								"converters": [
+									{
+										"converter": "crt.SearchFilterAttributeConverter",
+										"args": [
+											"GridDetail_nysitpf"
+										]
+									}
+								]
+							}
+						],
+						"from": [
+							"GridDetailSearchFilter_8w2harc_SearchValue",
+							"GridDetailSearchFilter_8w2harc_FilteredColumnsGroups"
+						]
+					}
+				},
+				"parentName": "FlexContainer_k4i97jf",
+				"propertyName": "items",
+				"index": 3
+			},
+			{
+				"operation": "insert",
+				"name": "GridContainer_idxg6kj",
+				"values": {
+					"type": "crt.GridContainer",
+					"rows": "minmax(max-content, 32px)",
+					"columns": [
+						"minmax(32px, 1fr)",
+						"minmax(32px, 1fr)"
+					],
+					"gap": {
+						"columnGap": "large",
+						"rowGap": 0
+					},
+					"styles": {
+						"overflow-x": "hidden"
+					},
+					"items": []
+				},
+				"parentName": "ExpansionPanel_8avdqwi",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "RealtyVisitsGridDetails",
+				"values": {
+					"type": "crt.DataGrid",
+					"layoutConfig": {
+						"colSpan": 2,
+						"column": 1,
+						"row": 1,
+						"rowSpan": 6
+					},
+					"features": {
+						"rows": {
+							"selection": {
+								"enable": true,
+								"multiple": true
+							}
+						},
+						"editable": {
+							"enable": false,
+							"itemsCreation": false,
+							"floatingEditPanel": false
+						}
+					},
+					"items": "$GridDetail_nysitpf",
+					"activeRow": "$GridDetail_nysitpf_ActiveRow",
+					"selectionState": "$GridDetail_nysitpf_SelectionState",
+					"_selectionOptions": {
+						"attribute": "GridDetail_nysitpf_SelectionState"
+					},
+					"visible": true,
+					"fitContent": true,
+					"primaryColumnName": "GridDetail_nysitpfDS_Id",
+					"columns": [
+						{
+							"id": "06804d74-78a4-dba9-93b1-cf7cddee57f1",
+							"code": "GridDetail_nysitpfDS_UsrComment",
+							"caption": "#ResourceString(GridDetail_nysitpfDS_UsrComment)#",
+							"dataValueType": 28
+						},
+						{
+							"id": "5e233ecc-2f45-2700-4f5f-d1b1e0c2f576",
+							"code": "GridDetail_nysitpfDS_UsrManager",
+							"caption": "#ResourceString(GridDetail_nysitpfDS_UsrManager)#",
+							"dataValueType": 10
+						},
+						{
+							"id": "31b788b9-1256-f367-f980-634a31f03c05",
+							"code": "GridDetail_nysitpfDS_UsrParentRealty",
+							"caption": "#ResourceString(GridDetail_nysitpfDS_UsrParentRealty)#",
+							"dataValueType": 10
+						},
+						{
+							"id": "6bfc1089-0092-dcc4-94a2-425e76c0120c",
+							"code": "GridDetail_nysitpfDS_UsrPotentialCustomer",
+							"caption": "#ResourceString(GridDetail_nysitpfDS_UsrPotentialCustomer)#",
+							"dataValueType": 10
+						},
+						{
+							"id": "7b919d14-2eac-089d-7c7f-e6108661e171",
+							"code": "GridDetail_nysitpfDS_UsrVisitDateTime",
+							"caption": "#ResourceString(GridDetail_nysitpfDS_UsrVisitDateTime)#",
+							"dataValueType": 7
+						}
+					],
+					"placeholder": false,
+					"bulkActions": []
+				},
+				"parentName": "GridContainer_idxg6kj",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetail_nysitpf_AddTagsBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Add tag",
+					"icon": "tag-icon",
+					"clicked": {
+						"request": "crt.AddTagsInRecordsRequest",
+						"params": {
+							"dataSourceName": "GridDetail_nysitpfDS",
+							"filters": "$GridDetail_nysitpf | crt.ToCollectionFilters : 'GridDetail_nysitpf' : $GridDetail_nysitpf_SelectionState | crt.SkipIfSelectionEmpty : $GridDetail_nysitpf_SelectionState"
+						}
+					},
+					"items": []
+				},
+				"parentName": "RealtyVisitsGridDetails",
+				"propertyName": "bulkActions",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetail_nysitpf_RemoveTagsBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Remove tag",
+					"icon": "delete-button-icon",
+					"clicked": {
+						"request": "crt.RemoveTagsInRecordsRequest",
+						"params": {
+							"dataSourceName": "GridDetail_nysitpfDS",
+							"filters": "$GridDetail_nysitpf | crt.ToCollectionFilters : 'GridDetail_nysitpf' : $GridDetail_nysitpf_SelectionState | crt.SkipIfSelectionEmpty : $GridDetail_nysitpf_SelectionState"
+						}
+					}
+				},
+				"parentName": "GridDetail_nysitpf_AddTagsBulkAction",
+				"propertyName": "items",
+				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetail_nysitpf_ExportToExcelBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Export to Excel",
+					"icon": "export-button-icon",
+					"clicked": {
+						"request": "crt.ExportDataGridToExcelRequest",
+						"params": {
+							"viewName": "RealtyVisitsGridDetails",
+							"filters": "$GridDetail_nysitpf | crt.ToCollectionFilters : 'GridDetail_nysitpf' : $GridDetail_nysitpf_SelectionState | crt.SkipIfSelectionEmpty : $GridDetail_nysitpf_SelectionState"
+						}
+					}
+				},
+				"parentName": "RealtyVisitsGridDetails",
+				"propertyName": "bulkActions",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "GridDetail_nysitpf_DeleteBulkAction",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "Delete",
+					"icon": "delete-button-icon",
+					"clicked": {
+						"request": "crt.DeleteRecordsRequest",
+						"params": {
+							"dataSourceName": "GridDetail_nysitpfDS",
+							"filters": "$GridDetail_nysitpf | crt.ToCollectionFilters : 'GridDetail_nysitpf' : $GridDetail_nysitpf_SelectionState | crt.SkipIfSelectionEmpty : $GridDetail_nysitpf_SelectionState"
+						}
+					}
+				},
+				"parentName": "RealtyVisitsGridDetails",
+				"propertyName": "bulkActions",
+				"index": 2
 			}
 		]/**SCHEMA_VIEW_CONFIG_DIFF*/,
 		viewModelConfigDiff: /**SCHEMA_VIEW_MODEL_CONFIG_DIFF*/[
@@ -305,11 +686,29 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"PDS_UsrPrice_mcp2pez": {
 						"modelConfig": {
 							"path": "PDS.UsrPrice"
+						},
+						"validators": {
+							"MySuperValidator": {
+								"type": "usr.DGValidator",
+								"params": {
+									"minValue": 50,
+									"message": "#ResourceString(PriceCannotBeLess)#"
+								}
+							}
 						}
 					},
 					"PDS_UsrArea_mql92t9": {
 						"modelConfig": {
 							"path": "PDS.UsrArea"
+						},
+						"validators": {
+							"MySuperValidator": {
+								"type": "usr.DGValidator",
+								"params": {
+									"minValue": 100,
+									"message": "#ResourceString(AreaCannotBeLess)#"
+								}
+							}
 						}
 					},
 					"PDS_UsrType_wb40mkk": {
@@ -346,6 +745,52 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 						"modelConfig": {
 							"path": "PDS.UsrOfferTypeUsrCommissionPercent_q1liqrv"
 						}
+					},
+					"GridDetail_nysitpf": {
+						"isCollection": true,
+						"modelConfig": {
+							"path": "GridDetail_nysitpfDS",
+							"filterAttributes": [
+								{
+									"name": "GridDetailSearchFilter_8w2harc_GridDetail_nysitpf",
+									"loadOnChange": true
+								}
+							]
+						},
+						"viewModelConfig": {
+							"attributes": {
+								"GridDetail_nysitpfDS_UsrComment": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.UsrComment"
+									}
+								},
+								"GridDetail_nysitpfDS_UsrManager": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.UsrManager"
+									}
+								},
+								"GridDetail_nysitpfDS_UsrParentRealty": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.UsrParentRealty"
+									}
+								},
+								"GridDetail_nysitpfDS_UsrPotentialCustomer": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.UsrPotentialCustomer"
+									}
+								},
+								"GridDetail_nysitpfDS_UsrVisitDateTime": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.UsrVisitDateTime"
+									}
+								},
+								"GridDetail_nysitpfDS_Id": {
+									"modelConfig": {
+										"path": "GridDetail_nysitpfDS.Id"
+									}
+								}
+							}
+						}
 					}
 				}
 			},
@@ -366,7 +811,15 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				"operation": "merge",
 				"path": [],
 				"values": {
-					"primaryDataSourceName": "PDS"
+					"primaryDataSourceName": "PDS",
+					"dependencies": {
+						"GridDetail_nysitpfDS": [
+							{
+								"attributePath": "UsrParentRealty",
+								"relationPath": "PDS.Id"
+							}
+						]
+					}
 				}
 			},
 			{
@@ -387,11 +840,35 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							}
 						},
 						"scope": "page"
+					},
+					"GridDetail_nysitpfDS": {
+						"type": "crt.EntityDataSource",
+						"scope": "viewElement",
+						"config": {
+							"entitySchemaName": "UsrRealtyVisit",
+							"attributes": {
+								"UsrComment": {
+									"path": "UsrComment"
+								},
+								"UsrManager": {
+									"path": "UsrManager"
+								},
+								"UsrParentRealty": {
+									"path": "UsrParentRealty"
+								},
+								"UsrPotentialCustomer": {
+									"path": "UsrPotentialCustomer"
+								},
+								"UsrVisitDateTime": {
+									"path": "UsrVisitDateTime"
+								}
+							}
+						}
 					}
 				}
 			}
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
-handlers: /**SCHEMA_HANDLERS*/[
+		handlers: /**SCHEMA_HANDLERS*/[
 			{
 				request: "crt.HandleViewModelAttributeChangeRequest",
 				/* The custom implementation of the system query handler. */
@@ -409,6 +886,38 @@ handlers: /**SCHEMA_HANDLERS*/[
 			}
 		]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
-		validators: /**SCHEMA_VALIDATORS*/{}/**SCHEMA_VALIDATORS*/
+		validators: /**SCHEMA_VALIDATORS*/{
+			/* The validator type must contain a vendor prefix.
+			Format the validator type in PascalCase. */
+			"usr.DGValidator": {
+				validator: function (config) {
+					return function (control) {
+						let value = control.value;
+						let minValue = config.minValue;
+						let valueIsCorrect = value >= minValue;
+						var result;
+						if (valueIsCorrect) {
+							result = null;
+						} else {
+							result = {
+								"usr.DGValidator": { 
+									message: config.message
+								}
+							};
+						}
+						return result;
+					};
+				},
+				params: [
+					{
+						name: "minValue"
+					},
+					{
+						name: "message"
+					}
+				],
+				async: false
+			}
+		}/**SCHEMA_VALIDATORS*/
 	};
 });
